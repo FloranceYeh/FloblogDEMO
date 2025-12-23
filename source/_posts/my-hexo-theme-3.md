@@ -1,14 +1,15 @@
 ---
-title: HEXO主题开发2
+title: HEXO主题开发3
 date: 2025-12-23 21:33:23
 categories: Floblog
 tags:
     - Web
     - HEXO
     - EJS
+width: 2
 ---
 
-## 我的主题开发日志 2
+## 我的主题开发日志 3
 
 [项目Github](https://github.com/FloranceYeh/hexo-theme-floblog)
 

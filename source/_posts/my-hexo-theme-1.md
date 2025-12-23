@@ -6,6 +6,7 @@ tags:
     - Web
     - HEXO
     - EJS
+width: 1
 ---
 
 ## 我的主题开发日志 1

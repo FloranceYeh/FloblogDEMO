@@ -6,6 +6,7 @@ tags:
     - EJS
     - HEXO
 categories: Web
+width: 3
 ---
 
 `ParticleX`主题依旧是什么都没有:(

@@ -7,6 +7,7 @@ tags:
 - HEXO
 categories: Web
 toc: true
+width: 4
 ---
 
 由于ParticleX主题没有内置的Links页面，而是把友链整合到了主页的Card里，我个人不是很喜欢，而且Card能写的友链太少了，于是决定自己写一个Links页

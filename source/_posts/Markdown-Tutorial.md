@@ -5,6 +5,7 @@ categories: Tutorial
 tags:
     - Markdown
     - Tutorial
+width: 4
 ---
 
 写文章时，你是否被Word各式各样的标题、正文、引用样式搞得晕头转向？

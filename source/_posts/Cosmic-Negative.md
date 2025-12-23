@@ -3,6 +3,7 @@ title: Cosmic Negative
 date: 2025-12-17 21:46:30
 tags: Web
 toc: false
+width: 2
 ---
 
 ### 写好了网页的Light Mode

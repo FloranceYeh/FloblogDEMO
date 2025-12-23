@@ -1,0 +1,84 @@
+<%
+    let posts = site.posts;
+    let current = (page.current - 1) * config.index_generator.per_page;
+    posts.data.sort((a, b) => {
+        let x = a.pinned ?? 0,
+            y = b.pinned ?? 0;
+        return x === y ? b.date - a.date : y - x;
+    });
+    posts = posts.slice(current, config.index_generator.per_page + current);
+%>
+<% posts.forEach((post) => { %>
+<div class="post <%= theme.post.read_more.position %>" style="width:<% if (post.width) { %><%= post.width * 19 %><% } else { %>100<% } %>%">
+    <% if (theme.post.read_more.enable && (theme.post.read_more.position === "left")) { %>
+        <a href="<%- url_for(post.path) %>" class="read-more"><%= theme.post.read_more.text %></a>
+    <% } %>
+    <div class="post-content">
+        <a href="<%- url_for(post.path) %>">
+            <h2 class="post-title"><%= post.title %></h2>
+        </a>
+        <div class="category-and-date">
+            <% if (theme.post.show_category) { %>
+                <% if (post.categories.data.length !== 0) { %>
+                <span class="category">
+                    <a href="<%- url_for(post.categories.data[0].path) %>">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        <%= post.categories.data[0].name %>
+                    </a>
+                </span>
+                <% } %>
+            <% } %>
+            <% if (theme.post.show_date) { %>
+                <span class="date">
+                    <span class="icon">
+                        <i class="fa-solid fa-calendar fa-fw"></i>
+                    </span>
+                    <%- date(post.date, "YYYY/M/D") %>
+                </span>
+            <% } %>
+        </div>
+        <% if (theme.post.show_tags) { %>
+            <div class="post-tags">
+                <% if (post.tags.data.length !== 0) { %>
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                <% } %>
+                <% let prev; %>
+                <% post.tags.data.forEach((tag) => { %>
+                <span class="tag">
+                    <%
+                        const colors = theme.tags_colors.filter((color) => color !== prev);
+                        let id = Math.floor(Math.random() * colors.length);
+                        prev = colors[id];
+                    %>
+                    <a href="<%- url_for(tag.path) %>" style="color: <%- colors[id] %>"><%= tag.name %></a>
+                </span>
+                <% }); %>
+            </div>
+        <% } %>
+        <div class="description">
+            <div class="content" v-pre>
+                <% 
+                let contentToShow;
+                if (typeof post.description !== "undefined") {
+                    contentToShow = post.description;
+                } else if (post.excerpt) {
+                    contentToShow = post.excerpt;
+                } else {
+                    contentToShow = post.content;
+                }
+                // 限制为前10行
+                let lines = contentToShow.split('\n').slice(0, 5).join('\n');
+                %>
+                <%- markdown(lines) %>
+            </div>
+        </div>
+    </div>
+    <% if (theme.post.read_more.enable && (theme.post.read_more.position === "right" || theme.post.read_more.position === "bottom")) { %>
+        <a href="<%- url_for(post.path) %>" class="read-more"><%= theme.post.read_more.text %></a>
+    <% } %>
+</div>
+<% }); %>

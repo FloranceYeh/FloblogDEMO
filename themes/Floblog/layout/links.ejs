@@ -1,0 +1,49 @@
+<div id="archives">
+    <div id="main-wrapper" class="<% if (theme.cards.enable) { %>with-cards cards-<%- theme.cards.position %> <% } else { %>without-cards<% } %> ">
+        <% if (theme.cards.enable && theme.cards.position === "left") { %>
+        <div id="cards-wrapper">
+            <%- partial("_partials/cards") %>
+        </div>
+        <% } %>
+        <div id="links-wrapper">
+            <div class="links-container">
+                <% const linkData = site.data.links || {}; %>
+                <% Object.keys(linkData).forEach(function(category) { %>
+                    <h2 class="link-category-title">
+                        <i class="fa fa-link"></i>
+                        <%= category %>
+                    </h2>
+                    <div class="link">
+                    <% const items = linkData[category]; %>
+                    <% Object.keys(items).forEach(function(key) { %>
+                        <% const item = items[key]; %>
+                        <a href="<%= item.url %>" target="_blank" class="link-card">
+                        <div class="link-card-header">
+                            <img src="<%= item.ava %>" alt="<%= item.name %>" onerror="this.src='/images/avatar.jpg'">
+                        </div>
+                        <div class="link-card-body">
+                            <h3 class="link-card-title"><%= item.name %></h3>
+                            <p class="link-card-desc" title="<%= item.des %>"><%= item.des %></p>
+                        </div>
+                        </a>
+
+                    <% }); %>
+                    </div>
+                <% }); %>
+            </div>
+            <div class="content" v-pre>
+                <%- page.content %>
+            </div>
+            <% if (theme.comments.enable) { %>
+            <div class="comments-container">
+                <%- partial("_partials/comments") %>
+            </div>
+            <% } %>
+        </div>
+        <% if (theme.cards.enable && theme.cards.position === "right") { %>
+        <div id="cards-wrapper">
+            <%- partial("_partials/cards") %>
+        </div>
+        <% } %>
+    </div>
+</div>

@@ -8,8 +8,13 @@ loading:
   loading_gif: /images/loading.gif
 
 
-color_scheme: blue # red, blue, green, orange, purple, pink, gray
-color_slider: true
+theme_color: 200 #hsl(H, 65%, 45%)
+# blue: 200
+# red: 6
+# green: 134
+# orange: 28
+# purple: 280
+# pink: 330
 
 tags_colors:
     - "#ffa2c4"
@@ -84,7 +89,18 @@ cards:
     Categories: /categories/
     Tags: /tags/
     Links: /links/
-  canlendars: true
+  calendar: 
+    enable: true
+  theme_controler:
+    enable: true    # enable theme settings card
+    slider: true
+    presets:
+      blue: 200
+      red: 6
+      green: 134
+      orange: 28
+      purple: 280
+      pink: 330
 
 footer:
   enable: true
@@ -130,7 +146,7 @@ comments:
   # https://github.com/walinejs/waline
   waline:
       enable: true
-      serverURL: floblogdemocomments.florance.top  # Waline server address url, you should set this to your own link
+      serverURL: floblogdemocomments.florance.top # Waline server address url, you should set this to your own link
       locale: # Locale: https://waline.js.org/guide/client/i18n.html#locale-option
       commentCount: true # If false, comment count will only be displayed in post page, not in home page
       pageview: false # Pageviews count, Note: You should not enable both `waline.pageview` and `leancloud_visitors`

@@ -230,6 +230,12 @@ a {
     padding: 24px;
     transition: box-shadow 0.5s;
 }
+.timeline-content .item-time {
+    color: var(--text-primary-color);
+}
+.timeline-content .info .tags .icon {
+    color: var(--text-primary-color);
+}
 .timeline-content:hover {
     box-shadow: 0 2px 8px var(--shadow-color);
 }
